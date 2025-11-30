@@ -52,14 +52,14 @@ const Index = () => {
       id: 5,
       title: 'Ретро Красотка',
       artist: 'Татьяна Волкова',
-      imageUrl: 'https://cdn.poehali.dev/files/841e39da-4b49-4ea2-95b9-f3a397172c3f.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/0fbc411a-7f25-44c0-bed6-e83fefd71207.jpg',
       category: 'Портрет'
     },
     {
       id: 6,
       title: 'Винтажные Героини',
       artist: 'Вера Новикова',
-      imageUrl: 'https://cdn.poehali.dev/files/d0d21b37-fa18-40e8-bcae-2caecd3e18a7.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/51af4dbd-0486-423b-bdbf-7b9cea75f11a.jpg',
       category: 'Винтаж'
     }
   ];
@@ -68,6 +68,20 @@ const Index = () => {
     setFavorites(prev =>
       prev.includes(id) ? prev.filter(fav => fav !== id) : [...prev, id]
     );
+  };
+
+  const navigateArtwork = (direction: 'prev' | 'next') => {
+    if (!selectedArtwork) return;
+    const currentIndex = artworks.findIndex(art => art.id === selectedArtwork.id);
+    let newIndex;
+    
+    if (direction === 'prev') {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : artworks.length - 1;
+    } else {
+      newIndex = currentIndex < artworks.length - 1 ? currentIndex + 1 : 0;
+    }
+    
+    setSelectedArtwork(artworks[newIndex]);
   };
 
   const artists = [
@@ -380,12 +394,26 @@ const Index = () => {
                   <Badge className="bg-[#CD5C5C] text-white">{selectedArtwork.category}</Badge>
                 </div>
               </DialogHeader>
-              <div className="mt-4">
+              <div className="mt-4 relative group">
                 <img
                   src={selectedArtwork.imageUrl}
                   alt={selectedArtwork.title}
                   className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
                 />
+                <Button
+                  onClick={() => navigateArtwork('prev')}
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#8B4513]/80 hover:bg-[#8B4513] text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <Icon name="ChevronLeft" size={32} />
+                </Button>
+                <Button
+                  onClick={() => navigateArtwork('next')}
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#8B4513]/80 hover:bg-[#8B4513] text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <Icon name="ChevronRight" size={32} />
+                </Button>
               </div>
               <div className="flex gap-4 mt-6">
                 <Button
