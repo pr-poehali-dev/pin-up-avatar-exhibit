@@ -18,6 +18,7 @@ const Index = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [activeSection, setActiveSection] = useState('gallery');
   const [selectedArtwork, setSelectedArtwork] = useState<ArtworkItem | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
 
   const artworks: ArtworkItem[] = [
     {
@@ -202,26 +203,91 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {artworks.slice(0, 3).map((artwork) => (
+              {artworks.slice(0, 3).map((artwork, index) => (
                 <Card key={artwork.id} className="bg-[#F5DEB3] border-[#8B4513]/30 shadow-xl hover-scale">
                   <CardContent className="p-6">
-                    <div className="relative mb-4 rounded-lg overflow-hidden">
-                      <img src={artwork.imageUrl} alt={artwork.title} className="w-full h-64 object-cover" />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                        <button className="bg-[#CD5C5C] text-white p-6 rounded-full hover:scale-110 transition-transform shadow-lg">
-                          <Icon name="Play" size={32} />
-                        </button>
-                      </div>
+                    <div className="relative mb-4 rounded-lg overflow-hidden bg-black">
+                      {playingVideo === artwork.id ? (
+                        <video
+                          className="w-full h-64 object-cover"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                        >
+                          <source src={`https://cdn.poehali.dev/public/placeholder-video.mp4`} type="video/mp4" />
+                          <img src={artwork.imageUrl} alt={artwork.title} className="w-full h-64 object-cover" />
+                        </video>
+                      ) : (
+                        <>
+                          <img src={artwork.imageUrl} alt={artwork.title} className="w-full h-64 object-cover" />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                            <button 
+                              onClick={() => setPlayingVideo(artwork.id)}
+                              className="bg-[#CD5C5C] text-white p-6 rounded-full hover:scale-110 transition-transform shadow-lg"
+                            >
+                              <Icon name="Play" size={32} />
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                     <h3 className="text-2xl font-bold text-[#8B4513] mb-2">{artwork.title} Avatar</h3>
                     <p className="text-[#2F4F4F] mb-4">Анимированный видео портрет</p>
-                    <Button className="w-full bg-[#8B4513] hover:bg-[#6B3410]">
-                      <Icon name="Download" size={18} className="mr-2" />
-                      Скачать аватар
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button 
+                        onClick={() => setPlayingVideo(playingVideo === artwork.id ? null : artwork.id)}
+                        className="flex-1 bg-[#CD5C5C] hover:bg-[#B85050] text-white"
+                      >
+                        <Icon name={playingVideo === artwork.id ? "Pause" : "Play"} size={18} className="mr-2" />
+                        {playingVideo === artwork.id ? 'Пауза' : 'Смотреть'}
+                      </Button>
+                      <Button className="flex-1 bg-[#8B4513] hover:bg-[#6B3410] text-white">
+                        <Icon name="Download" size={18} className="mr-2" />
+                        Скачать
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+            
+            <div className="mt-16">
+              <h3 className="text-3xl font-bold text-[#8B4513] mb-8 text-center">Демо Видео Аватары</h3>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <Card className="bg-[#F5DEB3] border-[#8B4513]/30 shadow-xl">
+                  <CardContent className="p-6">
+                    <div className="relative rounded-lg overflow-hidden mb-4 bg-black aspect-video">
+                      <video
+                        className="w-full h-full object-cover"
+                        controls
+                        poster={artworks[0].imageUrl}
+                      >
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                        Ваш браузер не поддерживает видео.
+                      </video>
+                    </div>
+                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Пример анимированного аватара</h4>
+                    <p className="text-[#2F4F4F] mb-4">Профессиональная анимация в винтажном стиле</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-[#F5DEB3] border-[#8B4513]/30 shadow-xl">
+                  <CardContent className="p-6">
+                    <div className="relative rounded-lg overflow-hidden mb-4 bg-black aspect-video">
+                      <iframe
+                        className="w-full h-full"
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Как создаются видео аватары</h4>
+                    <p className="text-[#2F4F4F] mb-4">Процесс создания уникальных анимаций</p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </section>
         )}
