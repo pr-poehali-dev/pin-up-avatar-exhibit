@@ -263,11 +263,11 @@ const Index = () => {
                         controls
                         poster={artworks[0].imageUrl}
                       >
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                        <source src="/videos/Hailuo_Video_girl starts to smile and gives_443121498038476802.mp4" type="video/mp4" />
                         Ваш браузер не поддерживает видео.
                       </video>
                     </div>
-                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Пример анимированного аватара</h4>
+                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Винтажная красавица оживает</h4>
                     <p className="text-[#2F4F4F] mb-4">Профессиональная анимация в винтажном стиле</p>
                   </CardContent>
                 </Card>
@@ -275,16 +275,17 @@ const Index = () => {
                 <Card className="bg-[#F5DEB3] border-[#8B4513]/30 shadow-xl">
                   <CardContent className="p-6">
                     <div className="relative rounded-lg overflow-hidden mb-4 bg-black aspect-video">
-                      <iframe
-                        className="w-full h-full"
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
+                      <video
+                        className="w-full h-full object-cover"
+                        controls
+                        poster={artworks[1].imageUrl}
+                      >
+                        <source src="/videos/Hailuo_Video_girl starts to smile and gives_443121498038476802.mp4" type="video/mp4" />
+                        Ваш браузер не поддерживает видео.
+                      </video>
                     </div>
-                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Как создаются видео аватары</h4>
-                    <p className="text-[#2F4F4F] mb-4">Процесс создания уникальных анимаций</p>
+                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Анимированный портрет</h4>
+                    <p className="text-[#2F4F4F] mb-4">Живые эмоции в стиле ретро</p>
                   </CardContent>
                 </Card>
               </div>
