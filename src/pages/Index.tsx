@@ -20,44 +20,44 @@ const Index = () => {
   const artworks: ArtworkItem[] = [
     {
       id: 1,
-      title: 'Vintage Glamour',
+      title: 'Военная Романтика',
       artist: 'Мария Иванова',
-      imageUrl: 'https://cdn.poehali.dev/projects/180ee32b-d263-4b9d-965d-0ba447f26107/files/5d0382d5-0e22-4282-a537-915e9e71c31d.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/841e39da-4b49-4ea2-95b9-f3a397172c3f.jpg',
       category: 'Классика'
     },
     {
       id: 2,
-      title: 'Retro Beauty',
+      title: 'Victory Girl',
       artist: 'Анна Петрова',
-      imageUrl: 'https://cdn.poehali.dev/projects/180ee32b-d263-4b9d-965d-0ba447f26107/files/b1657c47-c66d-4825-ab1b-5841d30abbd5.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/d0d21b37-fa18-40e8-bcae-2caecd3e18a7.jpg',
       category: 'Портрет'
     },
     {
       id: 3,
-      title: 'Golden Era',
+      title: 'Военный Триптих',
       artist: 'Елена Сидорова',
-      imageUrl: 'https://cdn.poehali.dev/projects/180ee32b-d263-4b9d-965d-0ba447f26107/files/26597b4d-23b2-4642-9e1a-3149e9a02885.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/dc58fdb0-1243-4e13-a910-5dc70f67b1bb.png',
       category: 'Винтаж'
     },
     {
       id: 4,
-      title: 'Classic Pin-Up',
+      title: 'Художественная Коллекция',
       artist: 'Ольга Смирнова',
-      imageUrl: 'https://cdn.poehali.dev/projects/180ee32b-d263-4b9d-965d-0ba447f26107/files/5d0382d5-0e22-4282-a537-915e9e71c31d.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/69a55bc3-e346-4536-8e59-4cdc8df1fa2d.png',
       category: 'Классика'
     },
     {
       id: 5,
-      title: 'Timeless Elegance',
+      title: 'Ретро Красотка',
       artist: 'Татьяна Волкова',
-      imageUrl: 'https://cdn.poehali.dev/projects/180ee32b-d263-4b9d-965d-0ba447f26107/files/b1657c47-c66d-4825-ab1b-5841d30abbd5.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/841e39da-4b49-4ea2-95b9-f3a397172c3f.jpg',
       category: 'Портрет'
     },
     {
       id: 6,
-      title: 'Nostalgic Dream',
+      title: 'Винтажные Героини',
       artist: 'Вера Новикова',
-      imageUrl: 'https://cdn.poehali.dev/projects/180ee32b-d263-4b9d-965d-0ba447f26107/files/26597b4d-23b2-4642-9e1a-3149e9a02885.jpg',
+      imageUrl: 'https://cdn.poehali.dev/files/d0d21b37-fa18-40e8-bcae-2caecd3e18a7.jpg',
       category: 'Винтаж'
     }
   ];
