@@ -280,12 +280,12 @@ const Index = () => {
                         controls
                         poster={artworks[1].imageUrl}
                       >
-                        <source src="/videos/Hailuo_Video_girl starts to smile and gives_443121498038476802.mp4" type="video/mp4" />
+                        <source src="/videos/Hailuo_Video_girl stands up, reloads machin_443527782776745990.mp4" type="video/mp4" />
                         Ваш браузер не поддерживает видео.
                       </video>
                     </div>
-                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Анимированный портрет</h4>
-                    <p className="text-[#2F4F4F] mb-4">Живые эмоции в стиле ретро</p>
+                    <h4 className="text-xl font-bold text-[#8B4513] mb-2">Боевая красавица в действии</h4>
+                    <p className="text-[#2F4F4F] mb-4">Динамичная анимация винтажного персонажа</p>
                   </CardContent>
                 </Card>
               </div>
