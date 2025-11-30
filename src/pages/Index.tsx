@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 interface ArtworkItem {
   id: number;
@@ -16,6 +17,7 @@ interface ArtworkItem {
 const Index = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [activeSection, setActiveSection] = useState('gallery');
+  const [selectedArtwork, setSelectedArtwork] = useState<ArtworkItem | null>(null);
 
   const artworks: ArtworkItem[] = [
     {
@@ -132,7 +134,7 @@ const Index = () => {
                       key={artwork.id}
                       className="group overflow-hidden hover-scale bg-[#F5DEB3] border-[#8B4513]/30 shadow-xl"
                     >
-                      <div className="relative overflow-hidden">
+                      <div className="relative overflow-hidden cursor-pointer" onClick={() => setSelectedArtwork(artwork)}>
                         <img
                           src={artwork.imageUrl}
                           alt={artwork.title}
@@ -364,6 +366,48 @@ const Index = () => {
           <p className="text-sm opacity-80">Искусство, вдохновленное золотой эрой 50-х годов</p>
         </div>
       </footer>
+
+      <Dialog open={!!selectedArtwork} onOpenChange={() => setSelectedArtwork(null)}>
+        <DialogContent className="max-w-5xl bg-[#F5DEB3] border-[#8B4513]">
+          {selectedArtwork && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-3xl font-bold text-[#8B4513] mb-2">
+                  {selectedArtwork.title}
+                </DialogTitle>
+                <div className="flex items-center gap-4 text-[#2F4F4F]">
+                  <p className="text-lg">by {selectedArtwork.artist}</p>
+                  <Badge className="bg-[#CD5C5C] text-white">{selectedArtwork.category}</Badge>
+                </div>
+              </DialogHeader>
+              <div className="mt-4">
+                <img
+                  src={selectedArtwork.imageUrl}
+                  alt={selectedArtwork.title}
+                  className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+                />
+              </div>
+              <div className="flex gap-4 mt-6">
+                <Button
+                  onClick={() => toggleFavorite(selectedArtwork.id)}
+                  className="flex-1 bg-[#CD5C5C] hover:bg-[#B85050] text-white"
+                >
+                  <Icon
+                    name="Heart"
+                    size={20}
+                    className={`mr-2 ${favorites.includes(selectedArtwork.id) ? 'fill-white' : ''}`}
+                  />
+                  {favorites.includes(selectedArtwork.id) ? 'В избранном' : 'Добавить в избранное'}
+                </Button>
+                <Button className="flex-1 bg-[#8B4513] hover:bg-[#6B3410] text-white">
+                  <Icon name="ShoppingCart" size={20} className="mr-2" />
+                  Купить работу
+                </Button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
